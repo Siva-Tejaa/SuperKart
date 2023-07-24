@@ -1,0 +1,30 @@
+.head-search{
+    background-color: #232F3E;
+    display: flex;
+    padding: 10px;
+    justify-content: center;
+    display: none;
+}
+
+
+@media (max-width: 480px) {
+
+
+
+}
+
+@media (max-width: 768px) {
+
+    .head-search{
+        display: block;
+        background-color: #232F3E;
+        display: flex;
+        padding: 10px;
+        justify-content: center;
+    }
+
+}
+
+@media (max-width: 1024px) {
+
+}

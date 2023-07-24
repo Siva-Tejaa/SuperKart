@@ -1,0 +1,86 @@
+:root{
+    --header-background:#131921;
+}
+
+
+.header{
+    background-color: var(--header-background);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding:10px 20px 10px 10px;
+}
+
+.superkart-logo{
+    width: 9rem;
+}
+.header-search{
+    display: flex;
+    align-items: center;
+}
+.header-search-input{
+    padding: 8px;
+    border: none; 
+    outline: none;
+    border-radius: 2px 0 0 2px;
+    width: 350px;
+    height: 35px;
+}
+.header-search-btn{
+    padding: 2px 8px 2px 8px;
+    height: 35px;
+    background-color: #FBDB22;
+    border: none;
+    border-radius: 0 2px 2px 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+.header-btns{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.header-login-btn, .header-cart-btn{
+    padding: 5px 10px 5px 10px;
+    border-radius: 4px;
+    font-weight:bold;
+    cursor: pointer;
+}
+.header-cart-btn{
+    background-color: #FBDB22;
+    display: flex;
+    align-items: center;
+    border: none;
+}
+.header-login-btn{
+    display: flex;
+    align-items: center;
+    border: none;
+}
+
+
+
+@media (max-width: 480px) {
+
+
+
+}
+
+@media (max-width: 768px) {
+
+    .header{
+        padding:10px 5px 10px 0px;
+    }
+
+    .header-search{
+        display: none;
+    }
+
+}
+
+@media (max-width: 1024px) {
+
+}

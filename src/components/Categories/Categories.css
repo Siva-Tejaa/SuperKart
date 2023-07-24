@@ -1,0 +1,48 @@
+.categories-main{
+    background-color: #232F3E;
+    border-top: 1px solid #3a4553;
+
+}
+
+.categories{
+    color: white;
+    display: flex;
+    align-items: center;
+    padding:8px 20px 8px 15px;
+    gap: 40px;
+    overflow: auto;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.categories::-webkit-scrollbar {
+    display: none;
+  }
+  .cat{
+    color: white !important;
+  }
+
+
+  
+
+
+@media (max-width: 480px) {
+
+
+
+}
+
+@media (max-width: 768px) {
+
+    .categories{
+
+        padding:8px 5px 8px 5px;
+    }
+
+
+}
+
+@media (max-width: 1024px) {
+
+}

@@ -1,0 +1,40 @@
+.body{
+    padding: 20px 10px 20px 10px;
+    background-color: #e3e6e6;
+}
+.skeleton-map{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+
+}
+.skeleton-child{
+    width: 260px;
+}
+
+
+@media (max-width: 480px) {
+
+    .skeleton-child{
+        width: 80px;
+    }
+
+}
+
+@media (max-width: 768px) {
+
+    .body{
+        padding: 10px 5px 10px 5px;
+    }
+
+    .skeleton-child{
+        width: 200px;
+    }
+
+
+}
+
+@media (max-width: 1024px) {
+
+}

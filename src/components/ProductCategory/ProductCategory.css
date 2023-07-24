@@ -1,0 +1,26 @@
+.product-category{
+    padding: 20px 10px 20px 10px;
+    background-color: #e3e6e6;
+}
+
+
+
+
+@media (max-width: 480px) {
+
+
+}
+
+@media (max-width: 768px) {
+
+    .product-category{
+        padding: 10px 5px 10px 5px;
+    }
+
+
+
+}
+
+@media (max-width: 1024px) {
+
+}
