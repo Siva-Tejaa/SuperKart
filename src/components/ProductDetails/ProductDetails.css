@@ -80,7 +80,25 @@
 .supercoin{
     width: 250px;
 }
-
+.delivery-details{
+    display: flex;
+    align-items: center;
+    gap: 5px; 
+    font-size: 14px;  
+}
+.del-free{
+    color: #388E3C;
+}
+.del-cost{
+    color: grey;
+}
+.del-location{
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    font-size: 14px;
+    cursor: pointer;
+}
 
 
 @media (max-width: 480px) {
@@ -110,6 +128,7 @@
     .supercoin{
         width: 200px;
     }
+
 
 
 

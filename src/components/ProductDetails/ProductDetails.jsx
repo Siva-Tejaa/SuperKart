@@ -35,6 +35,17 @@ const ProductDetails = () => {
       
       {console.log(data)}
 
+      const getLocation = () => {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition((position) => {
+              console.log(position)
+          });
+          // console.log(success);
+        } else {
+          console.log("Geolocation not supported");
+        }
+      }
+
 
 
   return (
@@ -96,6 +107,12 @@ const ProductDetails = () => {
               <div className='border'></div>
               <img src={SuperCoins} alt="SuperCoins" className='supercoin'/>
               <div className='border'></div>
+              <div className='delivery-details'>
+                <p>Delivery by 31 Jul, Monday</p> | <p className='del-free'>Free</p> <del className='del-cost'>₹40</del>
+              </div>
+              <div>
+                <p className='del-location' onClick={() => getLocation()}><span class="material-symbols-outlined">location_on</span>Select delivery location</p>
+              </div>
 
           </div>
         </div>
