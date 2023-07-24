@@ -10,6 +10,7 @@ import FreeDelivery from "../../assets/FreeDelivery.png";
 import PayOnDelivery from "../../assets/PayOnDelivery.png";
 import Replacement from "../../assets/Replacement.png";
 import SecureTransaction from "../../assets/SecureTransaction.png";
+import TopBrand from "../../assets/TopBrand.png";
 import SuperCoins from "../../assets/SuperCoins.png";
 
 const ProductDetails = () => {
@@ -85,8 +86,11 @@ const ProductDetails = () => {
                   <img src={Replacement} alt="Replacement" className='delivery-img'/>
                   <p className='delivery-text'>Replacement</p>
                 </div><div className='delivery'> 
-                  <img src={SecureTransaction} alt="PayOnDelivery" className='delivery-img'/>
+                  <img src={SecureTransaction} alt="Secure Transactiom" className='delivery-img'/>
                   <p className='delivery-text'>Secure Transaction</p>
+                </div><div className='delivery'> 
+                  <img src={TopBrand} alt="Top Brand" className='delivery-img'/>
+                  <p className='delivery-text'>Top Brand</p>
                 </div>
               </div>
               <div className='border'></div>
