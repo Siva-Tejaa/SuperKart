@@ -39,7 +39,7 @@ const ProductDetails = () => {
 
       const successCallback = (position) => {
         const fetchLocation = async() => {
-          const data = await fetch(`http://api.openweathermap.org/geo/1.0/reverse?lat=${position?.coords?.latitude}&lon=${position?.coords?.longitude}&limit=1&appid=8e771e8dedc4b5e2b382fe9ee550459b`);
+          const data = await fetch(`https://api.openweathermap.org/geo/1.0/reverse?lat=${position?.coords?.latitude}&lon=${position?.coords?.longitude}&limit=1&appid=8e771e8dedc4b5e2b382fe9ee550459b`);
           const result = await data.json();
           setLocation(result);
         }
