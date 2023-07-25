@@ -15,9 +15,12 @@ import SuperCoins from "../../assets/SuperCoins.png";
 
 const ProductDetails = () => {
 
+  const apiKey = import.meta.env.VITE_API_KEY;
+
+
   const[prodImage, setProdImage] = useState();
 
-  const[location, setLocation] = useState();
+  const[location, setLocation] = useState({"name":sessionStorage.getItem("city"), "state":sessionStorage.getItem("state")});
 
     const{productid} = useParams();
 
@@ -39,9 +42,11 @@ const ProductDetails = () => {
 
       const successCallback = (position) => {
         const fetchLocation = async() => {
-          const data = await fetch(`https://api.openweathermap.org/geo/1.0/reverse?lat=${position?.coords?.latitude}&lon=${position?.coords?.longitude}&limit=1&appid=8e771e8dedc4b5e2b382fe9ee550459b`);
+          const data = await fetch(`https://api.openweathermap.org/geo/1.0/reverse?lat=${position?.coords?.latitude}&lon=${position?.coords?.longitude}&limit=1&appid=${apiKey}`);
           const result = await data.json();
-          setLocation(result);
+          sessionStorage.setItem("city", result[0]?.name);
+          sessionStorage.setItem("state", result[0]?.state);
+          setLocation(result[0]);
         }
 
         fetchLocation();
@@ -126,7 +131,7 @@ const ProductDetails = () => {
                 <p>Delivery by 31 Jul, Monday</p> | <p className='del-free'>Free</p> <del className='del-cost'>₹40</del>
               </div>
               <div>
-                <p className='del-location' onClick={() => getLocation()}><span class="material-symbols-outlined">location_on</span>{location ? `${location[0]?.name}, ${location[0]?.state}` :"Select delivery location"}</p>
+                <p className='del-location' onClick={() => getLocation()}><span class="material-symbols-outlined">location_on</span>{location?.name ? `${location?.name}, ${location?.state}` :"Select delivery location"}</p>
               </div>
 
           </div>

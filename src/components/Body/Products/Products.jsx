@@ -48,7 +48,7 @@ const Products = () => {
             data?.products?.map((product) => (
               <Link to={`/productdetails/${product?.id}`} key={product?.id}>
                 <div className='product'  title={product?.title}>
-                    <p className='wishlist' title="Add to WishList">❤</p>
+                    <p className='wishlist' title="Add to WishList"><span class="material-icons-outlined">favorite</span></p>
                     <img src={product?.images[0]} className='product-image' loading='lazy' alt={product?.title}/>
                     <div className='product-title'>{product?.title}</div>
                     <div className='rating-stock'>
