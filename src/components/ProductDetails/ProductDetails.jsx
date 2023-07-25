@@ -17,6 +17,8 @@ const ProductDetails = () => {
 
   const[prodImage, setProdImage] = useState();
 
+  const[location, setLocation] = useState();
+
     const{productid} = useParams();
 
     const dispatch = useDispatch();
@@ -35,12 +37,25 @@ const ProductDetails = () => {
       
       {console.log(data)}
 
+      const successCallback = (position) => {
+        const fetchLocation = async() => {
+          const data = await fetch(`http://api.openweathermap.org/geo/1.0/reverse?lat=${position?.coords?.latitude}&lon=${position?.coords?.longitude}&limit=1&appid=8e771e8dedc4b5e2b382fe9ee550459b`);
+          const result = await data.json();
+          setLocation(result);
+        }
+
+        fetchLocation();
+
+      }
+
+
+      const errorCallback = (error) => {
+        console.log(error);
+      }
+
       const getLocation = () => {
         if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition((position) => {
-              console.log(position)
-          });
-          // console.log(success);
+          navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
         } else {
           console.log("Geolocation not supported");
         }
@@ -111,7 +126,7 @@ const ProductDetails = () => {
                 <p>Delivery by 31 Jul, Monday</p> | <p className='del-free'>Free</p> <del className='del-cost'>₹40</del>
               </div>
               <div>
-                <p className='del-location' onClick={() => getLocation()}><span class="material-symbols-outlined">location_on</span>Select delivery location</p>
+                <p className='del-location' onClick={() => getLocation()}><span class="material-symbols-outlined">location_on</span>{location ? `${location[0]?.name}, ${location[0]?.state}` :"Select delivery location"}</p>
               </div>
 
           </div>
