@@ -170,6 +170,24 @@
         width: 200px;
     }
 
+    .checkout-btn{
+        padding: 10px 10px;
+
+    }
+
+    .checkout-quantity{
+        padding: 10px 0px 10px 6px;
+    }
+
+    .add-to-cart{
+        padding:10px 50px;
+
+    }
+    .favo-btn{
+        padding: 2px;
+
+    }
+
 
 
 

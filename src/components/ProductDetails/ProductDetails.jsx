@@ -64,7 +64,7 @@ const ProductDetails = () => {
 
   const getLocation = () => {
     if (navigator.geolocation) {
-      navigator.vibrate(1000);
+      navigator.vibrate(500);
       navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
     } else {
       console.log("Geolocation not supported");
