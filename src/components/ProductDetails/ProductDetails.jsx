@@ -15,6 +15,8 @@ import SuperCoins from "../../assets/SuperCoins.png";
 
 import toast, { Toaster } from "react-hot-toast";
 
+import ErrorSoundEffect from "../../assets/Sounds/ErrorSoundEffect.mp3";
+
 const ProductDetails = () => {
   const apiKey = import.meta.env.VITE_API_KEY;
 
@@ -31,6 +33,8 @@ const ProductDetails = () => {
   const dispatch = useDispatch();
 
   const { data, status } = useSelector((state) => state.productdetails);
+
+  const errorSound = new Audio(ErrorSoundEffect);
 
   useEffect(() => {
     dispatch(getProductDetails(productid));
@@ -74,6 +78,7 @@ const ProductDetails = () => {
   const decreaseQuantity = () => {
     if (quantity === 1) {
       toast.error("Quantity should not be less than 1");
+      errorSound.play();
     } else {
       setQuantity(quantity - 1);
     }
@@ -84,6 +89,7 @@ const ProductDetails = () => {
 
     if (quantity == maxQty) {
       toast.error("Product Stock Not Available!");
+      errorSound.play();
     } else {
       setQuantity(quantity + 1);
     }
