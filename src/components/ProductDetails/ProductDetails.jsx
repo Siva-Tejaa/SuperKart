@@ -16,6 +16,7 @@ import SuperCoins from "../../assets/SuperCoins.png";
 import toast, { Toaster } from "react-hot-toast";
 
 import ErrorSoundEffect from "../../assets/Sounds/ErrorSoundEffect.mp3";
+import SuccessSoundEffect from "../../assets/Sounds/SuccessSoundEffect.mp3";
 
 const ProductDetails = () => {
   const apiKey = import.meta.env.VITE_API_KEY;
@@ -35,6 +36,8 @@ const ProductDetails = () => {
   const { data, status } = useSelector((state) => state.productdetails);
 
   const errorSound = new Audio(ErrorSoundEffect);
+  const successSound = new Audio(SuccessSoundEffect);
+  const delDate = new Date();
 
   useEffect(() => {
     dispatch(getProductDetails(productid));
@@ -68,7 +71,7 @@ const ProductDetails = () => {
 
   const getLocation = () => {
     if (navigator.geolocation) {
-      navigator.vibrate(500);
+      navigator.vibrate(200);
       navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
     } else {
       console.log("Geolocation not supported");
@@ -77,8 +80,8 @@ const ProductDetails = () => {
 
   const decreaseQuantity = () => {
     if (quantity === 1) {
-      toast.error("Quantity should not be less than 1");
       errorSound.play();
+      toast.error("Quantity should not be less than 1");
     } else {
       setQuantity(quantity - 1);
     }
@@ -88,11 +91,15 @@ const ProductDetails = () => {
     let maxQty = data?.stock > 0 && `${data?.stock}`;
 
     if (quantity == maxQty) {
-      toast.error("Product Stock Not Available!");
       errorSound.play();
+      toast.error("Product Stock Not Available!");
     } else {
       setQuantity(quantity + 1);
     }
+  };
+
+  const cartProducts = () => {
+    successSound.play();
   };
 
   return (
@@ -231,7 +238,12 @@ const ProductDetails = () => {
           <img src={SuperCoins} alt="SuperCoins" className="supercoin" />
           <div className="border"></div>
           <div className="delivery-details">
-            <p>Delivery by 31 Jul, Monday</p> | <p className="del-free">Free</p>{" "}
+            <p>
+              Delivery by {delDate.getDay()}{" "}
+              {delDate.toLocaleString("en-us", { month: "short" })},{" "}
+              {delDate.toLocaleString("en-us", { weekday: "long" })}
+            </p>{" "}
+            | <p className="del-free">Free</p>{" "}
             <del className="del-cost">₹40</del>
           </div>
           <div>
@@ -267,7 +279,9 @@ const ProductDetails = () => {
               <Toaster position="top-right" />
             </div>
             <div>
-              <button className="add-to-cart">Add to Cart</button>
+              <button className="add-to-cart" onClick={() => cartProducts()}>
+                Add to Cart
+              </button>
             </div>
             <div className="wishlist-fav">
               <button className="favo-btn">
