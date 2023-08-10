@@ -5,6 +5,7 @@ import { Link, useParams } from "react-router-dom";
 
 import { useSelector, useDispatch } from "react-redux";
 import { getProductDetails } from "../../redux/features/productDetailsSlice";
+import { cart } from "../../redux/features/cartSlice";
 
 import FreeDelivery from "../../assets/FreeDelivery.png";
 import PayOnDelivery from "../../assets/PayOnDelivery.png";
@@ -47,9 +48,9 @@ const ProductDetails = () => {
     return <Error />;
   }
 
-  {
-    console.log(data);
-  }
+  // {
+  //   console.log(data);
+  // }
 
   const successCallback = (position) => {
     const fetchLocation = async () => {
@@ -98,8 +99,22 @@ const ProductDetails = () => {
     }
   };
 
-  const cartProducts = () => {
+  const cartProducts = (data) => {
+    // console.log({ ...data, quantity: quantity });
+    dispatch(
+      cart({
+        ...data,
+        price: Math.round(
+          data?.price * 50 -
+            (Math.ceil(data?.discountPercentage) / 100) * (data?.price * 50)
+        ).toLocaleString(),
+        discountPercentage: Math.ceil(data?.discountPercentage),
+        rating: data?.rating?.toFixed(1),
+        quantity: quantity,
+      })
+    );
     successSound.play();
+    toast.success("Product Added to Cart");
   };
 
   return (
@@ -279,7 +294,10 @@ const ProductDetails = () => {
               <Toaster position="top-right" />
             </div>
             <div>
-              <button className="add-to-cart" onClick={() => cartProducts()}>
+              <button
+                className="add-to-cart"
+                onClick={() => cartProducts(data)}
+              >
                 Add to Cart
               </button>
             </div>
