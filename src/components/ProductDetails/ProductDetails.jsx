@@ -110,6 +110,7 @@ const ProductDetails = () => {
         ).toLocaleString(),
         discountPercentage: Math.ceil(data?.discountPercentage),
         rating: data?.rating?.toFixed(1),
+        originalprice: (data?.price * 50).toLocaleString(),
         quantity: quantity,
       })
     );
