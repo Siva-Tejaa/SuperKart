@@ -47,7 +47,7 @@ const ProductDetails = () => {
   if (status === "Error") {
     return <Error />;
   }
-
+ 
   // {
   //   console.log(data);
   // }
