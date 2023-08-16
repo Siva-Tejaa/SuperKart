@@ -43,7 +43,22 @@
     /* overflow: scroll; */
 }
 .cart-products{
+    display: flex;
+    /* align-items: start;
+    justify-content: flex-start; */
+    gap: 10px;
+    margin: 10px 0px;
     
+}
+.cart-prod-image{
+    width: 230px;
+    height: 180px;
+    border: 1px solid rgb(219, 219, 219);
+    border-radius: 8px;
+}
+.cart-product-title{
+    font-weight: bold;
+    font-size: large;
 }
 
 
