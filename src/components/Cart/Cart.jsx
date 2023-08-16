@@ -22,6 +22,11 @@ const Cart = () => {
 
             <div className="cart-product-details">
               <div className="cart-product-title">{cartproduct?.title}</div>
+              <div>
+                Category :{" "}
+                {cartproduct?.category?.charAt(0).toUpperCase() +
+                  cartproduct?.category?.slice(1)}
+              </div>
             </div>
           </div>
         ))}
