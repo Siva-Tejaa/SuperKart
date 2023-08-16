@@ -12,7 +12,7 @@ export const categoriesSlice = createSlice({
       if (productExist) {
         productExist.quantity = productExist.quantity + action.payload.quantity;
       } else {
-        state.push(action.payload);
+        state.unshift(action.payload);
       }
     },
   },
