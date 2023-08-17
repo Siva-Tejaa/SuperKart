@@ -32,6 +32,12 @@ const Cart = () => {
 
             <div className="cart-product-details">
               <div className="cart-product-title">{cartproduct?.title}</div>
+              <div className="cart-price-section">
+              
+               <h4>₹{cartproduct?.price}</h4>
+               <del className='prod-price'>₹{cartproduct?.originalprice}</del>
+               <div className='product-off'>{Math.ceil(cartproduct?.discountPercentage)}%off</div>
+              </div>
               <div>
                 Category :{" "}
                 {cartproduct?.category?.charAt(0).toUpperCase() +

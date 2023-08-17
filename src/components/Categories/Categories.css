@@ -1,7 +1,9 @@
 .categories-main{
     background-color: #232F3E;
     border-top: 1px solid #3a4553;
-
+    position: sticky;
+    top: 62px;
+    z-index: 2;
 }
 
 .categories{
