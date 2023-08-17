@@ -15,9 +15,12 @@ export const categoriesSlice = createSlice({
         state.unshift(action.payload);
       }
     },
+    clearCart: (state) => {
+      state.length = 0;
+    },
   },
 });
 
-export const { cart } = categoriesSlice.actions;
+export const { cart, clearCart } = categoriesSlice.actions;
 
 export default categoriesSlice.reducer;

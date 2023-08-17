@@ -1,19 +1,29 @@
 import React from "react";
 import "./Cart.css";
 import { useSelector, useDispatch } from "react-redux";
+import { clearCart } from "../../redux/features/cartSlice";
 
 import toast, { Toaster } from "react-hot-toast";
 
 const Cart = () => {
   const data = useSelector((state) => state.cart);
 
+  const dispatch = useDispatch();
+
+  const clearItems = () => {
+    dispatch(clearCart());
+  };
+
   return (
     <div className="cart">
       <div className="cart-left">
         <div className="cart-title">
           <div className="cart-title-main">Shopping Cart</div>
-          <div className="clear-cart">Clear Cart</div>
+          <div className="clear-cart" onClick={() => clearItems()}>
+            Clear Cart
+          </div>
         </div>
+
         {data.map((cartproduct, index) => (
           <div className="cart-products" key={cartproduct?.id}>
             <div className="cart-product-image">

@@ -35,6 +35,7 @@ const ProductDetails = () => {
   const dispatch = useDispatch();
 
   const { data, status } = useSelector((state) => state.productdetails);
+  const cartData = useSelector((state) => state.cart);
 
   const errorSound = new Audio(ErrorSoundEffect);
   const successSound = new Audio(SuccessSoundEffect);
@@ -101,21 +102,33 @@ const ProductDetails = () => {
 
   const cartProducts = (data) => {
     // console.log({ ...data, quantity: quantity });
-    dispatch(
-      cart({
-        ...data,
-        price: Math.round(
-          data?.price * 50 -
-            (Math.ceil(data?.discountPercentage) / 100) * (data?.price * 50)
-        ).toLocaleString(),
-        discountPercentage: Math.ceil(data?.discountPercentage),
-        rating: data?.rating?.toFixed(1),
-        originalprice: (data?.price * 50).toLocaleString(),
-        quantity: quantity,
-      })
-    );
-    successSound.play();
-    toast.success("Product Added to Cart");
+
+    const productExist = cartData.find((prod) => prod.id === data?.id);
+
+    let maxQty = data?.stock > 0 && `${data?.stock}`;
+
+    // console.log(productExist?.quantity, maxQty);
+
+    if (productExist?.quantity + quantity > Number(maxQty)) {
+      errorSound.play();
+      toast.error("Product Stock Quantity Exceeded!");
+    } else {
+      dispatch(
+        cart({
+          ...data,
+          price: Math.round(
+            data?.price * 50 -
+              (Math.ceil(data?.discountPercentage) / 100) * (data?.price * 50)
+          ).toLocaleString(),
+          discountPercentage: Math.ceil(data?.discountPercentage),
+          rating: data?.rating?.toFixed(1),
+          originalprice: (data?.price * 50).toLocaleString(),
+          quantity: quantity,
+        })
+      );
+      successSound.play();
+      toast.success("Product Added to Cart");
+    }
   };
 
   return (
