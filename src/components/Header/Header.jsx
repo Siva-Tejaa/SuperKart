@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Header.css";
 import Search from "./Search";
 
@@ -10,6 +10,12 @@ import { useSelector } from "react-redux";
 
 const Header = () => {
   const data = useSelector((state) => state.cart);
+
+  const [searchText, setSearchText] = useState("");
+
+  const changeHandler = (e) => {
+    setSearchText(e.target.value);
+  };
 
   return (
     <>
@@ -26,10 +32,13 @@ const Header = () => {
             type="search"
             placeholder="Search for products and more..."
             className="header-search-input"
+            onChange={changeHandler}
           />
-          <button className="header-search-btn">
-            <span class="material-icons-outlined">search</span>
-          </button>
+          <Link to={`/search/${searchText}`}>
+            <button className="header-search-btn">
+              <span class="material-icons-outlined">search</span>
+            </button>
+          </Link>
         </div>
         <div className="header-btns">
           <button className="header-login-btn">
@@ -45,7 +54,11 @@ const Header = () => {
         </div>
       </div>
       <div>
-        <Search />
+        <Search
+          searchText={searchText}
+          setSearchText={setSearchText}
+          changeHandler={changeHandler}
+        />
       </div>
     </>
   );

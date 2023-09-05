@@ -5,6 +5,7 @@ import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Categories from "./components/Categories/Categories";
 import Body from "./components/Body/Body";
+import SearchPage from "./components/SearchPage/SearchPage";
 
 import "react-loading-skeleton/dist/skeleton.css";
 
@@ -32,6 +33,7 @@ const App = () => {
         />
         <Route exact path="/category/all" element={<Navigate to="/" />} />
         <Route exact path="/cart" element={<Cart />} />
+        <Route exact path="/search/:searchtext" element={<SearchPage />} />
       </Routes>
       <Footer />
     </>
