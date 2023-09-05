@@ -6,6 +6,7 @@ import Footer from "./components/Footer/Footer";
 import Categories from "./components/Categories/Categories";
 import Body from "./components/Body/Body";
 import SearchPage from "./components/SearchPage/SearchPage";
+import NotFound from "./components/Error/NotFound";
 
 import "react-loading-skeleton/dist/skeleton.css";
 
@@ -34,6 +35,7 @@ const App = () => {
         <Route exact path="/category/all" element={<Navigate to="/" />} />
         <Route exact path="/cart" element={<Cart />} />
         <Route exact path="/search/:searchtext" element={<SearchPage />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
     </>
