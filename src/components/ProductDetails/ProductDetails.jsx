@@ -206,7 +206,7 @@ const ProductDetails = () => {
               ).toLocaleString()}
             </h2>
             <del className="prod-det-price">
-              ₹{(data?.price * 50).toLocaleString()}
+              ₹{(data?.price * 50).toLocaleString("en-IN")}
             </del>
             <div className="product-det-off">
               {Math.ceil(data?.discountPercentage)}%off

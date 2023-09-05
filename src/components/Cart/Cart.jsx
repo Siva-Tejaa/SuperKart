@@ -124,7 +124,17 @@ const Cart = () => {
           <p>
             Price ({data?.length} {data?.length > 1 ? "items" : "item"})
           </p>
-          <p>₹ 555</p>
+          <p>
+            ₹{" "}
+            {data
+              .reduce((accumulator, product) => {
+                const productTotal =
+                  parseFloat(product?.price.replace(/,/g, "")) *
+                  product.quantity;
+                return accumulator + productTotal;
+              }, 0)
+              .toLocaleString("en-IN")}
+          </p>
         </div>
         <div className="cart-order">
           <p>Delivery</p>
@@ -134,7 +144,17 @@ const Cart = () => {
 
         <div className="cart-order">
           <p>Amount Payable</p>
-          <p>₹ 999</p>
+          <b>
+            ₹{" "}
+            {data
+              .reduce((accumulator, product) => {
+                const productTotal =
+                  parseFloat(product?.price.replace(/,/g, "")) *
+                  product.quantity;
+                return accumulator + productTotal;
+              }, 0)
+              .toLocaleString("en-IN")}
+          </b>
         </div>
         <button className="cart-checkout-button">CheckOut</button>
       </div>
