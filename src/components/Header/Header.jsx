@@ -41,10 +41,11 @@ const Header = () => {
           </Link>
         </div>
         <div className="header-btns">
+        <Link to="/signin">
           <button className="header-login-btn">
             <span class="material-icons-outlined">person</span>
             <span>Login</span>
-          </button>
+          </button></Link>
           <Link to="/cart">
             <button className="header-cart-btn">
               <span class="material-icons-outlined">shopping_cart</span>

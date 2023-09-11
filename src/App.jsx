@@ -14,6 +14,8 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import ProductDetails from "./components/ProductDetails/ProductDetails";
 import ProductCategory from "./components/ProductCategory/ProductCategory";
 import Cart from "./components/Cart/Cart";
+import SignUp from "./components/Auth/SignUp/SignUp";
+import SignIn from "./components/Auth/SignIn/SignIn";
 
 const App = () => {
   return (
@@ -22,6 +24,8 @@ const App = () => {
       <Categories />
       <Routes>
         <Route exact path="/" element={<Body />} />
+        <Route exact path="/signup" element={<SignUp />} />
+        <Route exact path="/signin" element={<SignIn/>} />
         <Route
           exact
           path="/productdetails/:productid"

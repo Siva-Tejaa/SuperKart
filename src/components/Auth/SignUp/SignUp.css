@@ -1,0 +1,42 @@
+.signup{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.signup-border{
+    border: 1px solid grey;
+    padding: 12px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 4px;
+}
+.signup-title{
+    font-size:large;
+    font-weight: bolder;
+}
+.signup-name{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 8px;
+}
+.field{
+    padding: 8px;
+    width: 100%;
+    outline: 1px solid transparent;
+}
+.signup-btn{
+    border: none;
+    background-color: #FBDB22;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.signup-account{
+    font-size: small;
+}
+.signup-link{
+    color: #0066C0;
+}
