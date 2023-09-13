@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./App.css";
 
 import Header from "./components/Header/Header";
@@ -17,7 +17,22 @@ import Cart from "./components/Cart/Cart";
 import SignUp from "./components/Auth/SignUp/SignUp";
 import SignIn from "./components/Auth/SignIn/SignIn";
 
+import { useSelector, useDispatch } from "react-redux";
+import { currentUser } from "./redux/features/userSlice";
+
 const App = () => {
+
+  const dispatch = useDispatch();
+
+  let userSessData = sessionStorage.getItem("userDetails");
+
+
+  // console.log(JSON.parse(userSessData));
+
+  useEffect(() => {
+    dispatch(currentUser(JSON.parse(userSessData)));
+  },[userSessData]);
+
   return (
     <>
       <Header />

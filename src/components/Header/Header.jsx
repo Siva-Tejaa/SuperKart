@@ -10,12 +10,19 @@ import { useSelector } from "react-redux";
 
 const Header = () => {
   const data = useSelector((state) => state.cart);
+  const userData = useSelector((state) => state.user);
 
   const [searchText, setSearchText] = useState("");
 
   const changeHandler = (e) => {
     setSearchText(e.target.value);
   };
+
+  {console.log(userData)}
+
+  let isUserLoggedIn = sessionStorage.getItem("userId");
+
+  // console.log(userData[0].firstname)
 
   return (
     <>
@@ -41,11 +48,13 @@ const Header = () => {
           </Link>
         </div>
         <div className="header-btns">
-        <Link to="/signin">
+        {
+          !isUserLoggedIn ? <Link to="/signin">
           <button className="header-login-btn">
             <span class="material-icons-outlined">person</span>
             <span>Login</span>
-          </button></Link>
+          </button></Link> : <Link to="/sign"><img title={`${userData[0]?.firstname} ${userData[0].lastname}`} src={userData[0].profile} alt="UserImage" className="user-image"/></Link>
+        }
           <Link to="/cart">
             <button className="header-cart-btn">
               <span class="material-icons-outlined">shopping_cart</span>

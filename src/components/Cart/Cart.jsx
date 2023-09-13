@@ -14,7 +14,7 @@ import toast, { Toaster } from "react-hot-toast";
 const Cart = () => {
   const data = useSelector((state) => state.cart);
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch(); 
 
   const clearItems = () => {
     dispatch(clearCart());

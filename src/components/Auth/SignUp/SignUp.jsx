@@ -1,7 +1,7 @@
 import React,{useState} from 'react';
 import "./SignUp.css";
 
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { auth, db } from "../Firebase/Firebase.jsx"
 import { createUserWithEmailAndPassword } from 'firebase/auth';
@@ -25,6 +25,8 @@ const SignUp = () => {
         setUserData({...userData, [e.target.name]: e.target.value});
     }
 
+    const navigate = useNavigate();
+
     const submitHandler = async (e) => {
 
         e.preventDefault();
@@ -42,9 +44,17 @@ const SignUp = () => {
                 lastname: `${userData?.lastname}`,
                 profile: `https://i1.wp.com/cdn.auth0.com/avatars/${userData?.firstname.slice(0,1).toLowerCase()}${userData?.lastname.slice(0,1).toLowerCase()}.png`,
                 timestamp:serverTimestamp()
-              });
+            });
+
+            alert("User Created Successfully");
+            navigate('/signin');
+
+            
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+            console.log(err);
+            alert("Something went wrong");
+        });
 
     }
 

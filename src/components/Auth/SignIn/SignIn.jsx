@@ -1,13 +1,20 @@
 import React,{useState} from 'react';
 import "./SignIn.css";
 
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+
+import { useSelector, useDispatch } from "react-redux";
+import {currentUser} from "../../../redux/features/userSlice.jsx";
 
 import { auth, db } from "../Firebase/Firebase.jsx"
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { doc, getDoc } from "firebase/firestore";
 
 const SignIn = () => {
+
+    const navigate = useNavigate();
+
+    const dispatch = useDispatch();
 
     const initiallValues = {
         email:"",
@@ -43,7 +50,12 @@ const SignIn = () => {
             const docSnap = await getDoc(docRef);
 
             if (docSnap.exists()) {
-                console.log("Document data:", docSnap.data());
+                // console.log("Document data:", docSnap.data());
+                dispatch(currentUser(docSnap.data()))
+                sessionStorage.setItem("userId", `${uid}`);
+                sessionStorage.setItem("userDetails", `${JSON.stringify(docSnap.data())}`);
+                navigate("/");
+
             } else {
                 // docSnap.data() will be undefined in this case
                 console.log("No such document!");
