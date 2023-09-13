@@ -3,9 +3,9 @@ import "./SignUp.css";
 
 import { Link } from 'react-router-dom';
 
-import { auth } from "../Firebase/Firebase.jsx"
+import { auth, db } from "../Firebase/Firebase.jsx"
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { doc, setDoc } from "firebase/firestore"; 
+import { doc, serverTimestamp, setDoc } from "firebase/firestore"; 
 
 const SignUp = () => {
 
@@ -36,11 +36,13 @@ const SignUp = () => {
             console.log(succ);
             console.log(succ.user.uid);
 
-            //  setDoc(doc(db, "userData", `${succ.user.uid}`), {
-            //     name: "Los Angeles",
-            //     state: "CA",
-            //     country: "USA"
-            //   });
+            setDoc(doc(db, "userDetails", `${succ.user.uid}`), {
+                email:`${userData?.email}`,
+                firstname: `${userData?.firstname}`,
+                lastname: `${userData?.lastname}`,
+                profile: `https://i1.wp.com/cdn.auth0.com/avatars/${userData?.firstname.slice(0,1).toLowerCase()}${userData?.lastname.slice(0,1).toLowerCase()}.png`,
+                timestamp:serverTimestamp()
+              });
         })
         .catch((err) => console.log(err));
 
