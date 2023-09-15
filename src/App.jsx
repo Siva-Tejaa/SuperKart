@@ -16,13 +16,17 @@ import ProductCategory from "./components/ProductCategory/ProductCategory";
 import Cart from "./components/Cart/Cart";
 import SignUp from "./components/Auth/SignUp/SignUp";
 import SignIn from "./components/Auth/SignIn/SignIn";
+import AuthComponents from "./components/authComponents";
 
 import { useSelector, useDispatch } from "react-redux";
 import { currentUser } from "./redux/features/userSlice";
+import Profile from "./components/Profile/Profile";
 
 const App = () => {
 
   const dispatch = useDispatch();
+  const userData = useSelector((state) => state.user);
+
 
   let userSessData = sessionStorage.getItem("userDetails");
 
@@ -31,7 +35,7 @@ const App = () => {
 
   useEffect(() => {
     dispatch(currentUser(JSON.parse(userSessData)));
-  },[userSessData]);
+  },[]);
 
   return (
     <>
@@ -41,6 +45,7 @@ const App = () => {
         <Route exact path="/" element={<Body />} />
         <Route exact path="/signup" element={<SignUp />} />
         <Route exact path="/signin" element={<SignIn/>} />
+        <Route exact path="/profile" element={<Profile/>} />
         <Route
           exact
           path="/productdetails/:productid"

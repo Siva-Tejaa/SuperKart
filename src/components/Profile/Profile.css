@@ -1,0 +1,30 @@
+.profile{
+    /* background-color: white; */
+    height: 100vh;
+    background-color: rgb(216, 216, 216);
+    padding: 15px;
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+}
+.profile-details{
+    background-color: white;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}
+.profile-user-details{
+    padding: 10px;
+    background-color: #f0e4a7;
+}
+.account-details{
+    border-bottom: 3px solid #232F3E;
+    font-size: larger;
+    font-weight: bold;
+    color: #232F3E;
+}
+.user-profile-image{
+    border-radius: 100px;
+}

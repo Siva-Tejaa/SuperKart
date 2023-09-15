@@ -53,7 +53,7 @@ const Header = () => {
           <button className="header-login-btn">
             <span class="material-icons-outlined">person</span>
             <span>Login</span>
-          </button></Link> : <Link to="/sign"><img title={`${userData[0]?.firstname} ${userData[0].lastname}`} src={userData[0].profile} alt="UserImage" className="user-image"/></Link>
+          </button></Link> : <Link to="/profile"><img title={`${userData[0]?.firstname} ${userData[0]?.lastname}`} src={userData[0]?.profile} alt="UserImage" className="user-image"/></Link>
         }
           <Link to="/cart">
             <button className="header-cart-btn">
