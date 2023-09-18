@@ -16,7 +16,6 @@ import ProductCategory from "./components/ProductCategory/ProductCategory";
 import Cart from "./components/Cart/Cart";
 import SignUp from "./components/Auth/SignUp/SignUp";
 import SignIn from "./components/Auth/SignIn/SignIn";
-// import AuthComponents from "./components/authComponents";
 
 import { useSelector, useDispatch } from "react-redux";
 import { currentUser } from "./redux/features/userSlice";
@@ -30,6 +29,8 @@ const App = () => {
 
   let userSessData = sessionStorage.getItem("userDetails");
 
+  let userSessId = sessionStorage.getItem("userId");
+
 
   // console.log(JSON.parse(userSessData));
 
@@ -37,15 +38,23 @@ const App = () => {
     dispatch(currentUser(JSON.parse(userSessData)));
   },[]);
 
+  const RequireAuth = ({children}) => {
+    return userSessId ? children : <Navigate to="/signin"/>
+  }
+
+  const AfterLogin = ({children}) => {
+    return userSessId ? <Navigate to="/"/> : children
+  }
+
   return (
     <>
       <Header />
       <Categories />
       <Routes>
+        <Route exact path="/signup" element={<AfterLogin><SignUp/></AfterLogin>} />
+        <Route exact path="/signin" element={<AfterLogin><SignIn/></AfterLogin>}/>
         <Route exact path="/" element={<Body />} />
-        <Route exact path="/signup" element={<SignUp />} />
-        <Route exact path="/signin" element={<SignIn/>} />
-        <Route exact path="/profile" element={<Profile/>} />
+        <Route exact path="/profile" element={<RequireAuth><Profile/></RequireAuth>} />
         <Route
           exact
           path="/productdetails/:productid"
@@ -57,7 +66,7 @@ const App = () => {
           element={<ProductCategory />}
         />
         <Route exact path="/category/all" element={<Navigate to="/" />} />
-        <Route exact path="/cart" element={<Cart />} />
+        <Route exact path="/cart" element={<RequireAuth><Cart/></RequireAuth>} />
         <Route exact path="/search/:searchtext" element={<SearchPage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

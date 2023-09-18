@@ -15,9 +15,17 @@
     justify-content: center;
     gap: 10px;
 }
+.profile-user-details-parent{
+    background-color: #f8f3da;
+    padding: 10px;
+
+}
 .profile-user-details{
     padding: 10px;
-    background-color: #f0e4a7;
+    /* background-color: #f8f3da; */
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
 .account-details{
     border-bottom: 3px solid #232F3E;
@@ -27,4 +35,47 @@
 }
 .user-profile-image{
     border-radius: 100px;
+}
+.profile-username{
+    font-size:larger;
+    font-weight: bold;
+}
+.logout{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.logout-btn{
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    background-color: #CC0C39;
+    color: white;
+}
+
+@media (max-width: 480px) {
+
+    .profile-user-details{
+
+        gap: 10px;
+    }
+    .user-profile-image{
+        border-radius: 100px;
+        width: 90%;
+    }
+
+
+}
+
+@media (max-width: 768px) {
+
+}
+
+
+
+@media (max-width: 1024px) {
+
 }

@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 import { auth, db } from "../Firebase/Firebase.jsx"
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { doc, serverTimestamp, setDoc } from "firebase/firestore"; 
+import { doc, setDoc } from "firebase/firestore"; 
 
 const SignUp = () => {
 
@@ -43,7 +43,7 @@ const SignUp = () => {
                 firstname: `${userData?.firstname}`,
                 lastname: `${userData?.lastname}`,
                 profile: `https://i1.wp.com/cdn.auth0.com/avatars/${userData?.firstname.slice(0,1).toLowerCase()}${userData?.lastname.slice(0,1).toLowerCase()}.png`,
-                timestamp:serverTimestamp()
+                timestamp:`${new Date().toUTCString().slice(0,16)}, ${new Date().toLocaleString("en-IN").split(",")[1].slice(1)}`
             });
 
             alert("User Created Successfully");
