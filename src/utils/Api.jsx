@@ -6,4 +6,5 @@ export const SEARCH_PRODUCT = "https://dummyjson.com/products/search?q=";
 
 export const PRODUCT_CATEGORIES_LIST = "https://dummyjson.com/products/categories";
 
-export const PRODUCT_BY_CATEGORY = "https://dummyjson.com/products/category/"
+export const PRODUCT_BY_CATEGORY = "https://dummyjson.com/products/category/";
+
