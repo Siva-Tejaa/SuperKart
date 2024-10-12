@@ -18,7 +18,7 @@ const Header = () => {
     setSearchText(e.target.value);
   };
 
-  {console.log(userData)}
+  // {console.log(userData)}
 
   let isUserLoggedIn = sessionStorage.getItem("userId");
 
@@ -48,13 +48,23 @@ const Header = () => {
           </Link>
         </div>
         <div className="header-btns">
-        {
-          !isUserLoggedIn ? <Link to="/signin">
-          <button className="header-login-btn">
-            <span class="material-icons-outlined">person</span>
-            <span>Login</span>
-          </button></Link> : <Link to="/profile"><img title={`${userData[0]?.firstname} ${userData[0]?.lastname}`} src={userData[0]?.profile} alt="UserImage" className="user-image"/></Link>
-        }
+          {!isUserLoggedIn ? (
+            <Link to="/signin">
+              <button className="header-login-btn">
+                <span class="material-icons-outlined">person</span>
+                <span>Login</span>
+              </button>
+            </Link>
+          ) : (
+            <Link to="/profile">
+              <img
+                title={`${userData[0]?.firstname} ${userData[0]?.lastname}`}
+                src={userData[0]?.profile}
+                alt="UserImage"
+                className="user-image"
+              />
+            </Link>
+          )}
           <Link to="/cart">
             <button className="header-cart-btn">
               <span class="material-icons-outlined">shopping_cart</span>

@@ -12,6 +12,8 @@
     height: 450px;
     width: 450px;
     border-radius: 3px;
+    object-fit: contain;
+    border: 1px solid rgb(190, 187, 187);
     /* transition: transform 0.3s ease; */
     /* cursor: crosshair; */
 }
@@ -30,7 +32,8 @@
     width: 60px;
     height: 60px;
     border-radius: 3px;
-
+    object-fit: contain;
+    border: 1px solid rgb(190, 187, 187);
 }
 .prod-sm-img:hover{
     border: 2px solid #2874F0 ;
